@@ -1,0 +1,56 @@
+int trig =12;
+int echo =11;
+long lecture_echo;
+long cm;
+int R = 3;
+int j = 4;
+int V = 5;
+int sign=9;// signal d'arduino pour la commande de camera
+void setup() {
+pinMode(trig, OUTPUT);
+digitalWrite(trig, LOW);
+pinMode(echo, INPUT);
+Serial.begin(9600);
+pinMode(3, OUTPUT);
+pinMode(4, OUTPUT);
+pinMode(5, OUTPUT);
+pinMode(9, OUTPUT);
+}
+void loop() {
+//systeme feurouge
+digitalWrite(V, HIGH);
+delay(200);
+digitalWrite(V, LOW);
+digitalWrite(j, HIGH);
+delay(200);
+digitalWrite(j, LOW);
+digitalWrite(R, HIGH);
+delay(200);
+digitalWrite(R, LOW);
+
+//capteur ultrason
+digitalWrite(trig, HIGH);
+delayMicroseconds(10);
+digitalWrite(trig, LOW);
+lecture_echo=pulseIn(echo, HIGH)
+cm=lecture_echo/58;
+//detection d'auto..... + le feu vert
+if(cm<=30 and V=HIGH){
+digitalWrite(sign, HIGH);//prendre la photo
+delay(100);
+digitalWrite(sign, LOW);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
